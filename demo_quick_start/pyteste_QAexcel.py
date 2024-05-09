@@ -1,7 +1,7 @@
 from dotenv import load_dotenv, find_dotenv
 from langchain.chains import RetrievalQA
 from langchain.chat_models import ChatOpenAI
-from langchain.document_loaders import CSVLoader
+from langchain_community.document_loaders import CSVLoader
 from langchain.vectorstores import DocArrayInMemorySearch
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.embeddings.openai import OpenAIEmbeddings
@@ -29,7 +29,7 @@ def run_query(llm, retriever, query):
 
 def main():
     _ = load_dotenv(find_dotenv())
-    file_path = 'OutdoorClothingCatalog_1000.csv'
+    file_path = 'demo_quick_start\OutdoorClothingCatalog_1000.csv'
     docs = load_csv(file_path)
     retriever = create_embeddings(docs)
     llm = ChatOpenAI(temperature=0.0, max_tokens=1024)
